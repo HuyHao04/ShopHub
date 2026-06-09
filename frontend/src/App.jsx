@@ -10,7 +10,8 @@ function App() {
   return (
     <>
     <h1>ShopHub</h1>
-      <h2>Welcome to our store</h2>
+      <h2>Lâm Huy Hào</h2>
+      <h3>08/06/2026</h3>
 
       <section id="center">
         <div className="hero">
