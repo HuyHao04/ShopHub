@@ -1,4 +1,4 @@
-# Thành viên nhóm
+# Thành viên nhóm Ajinomoto
 
 | MSSV | Họ tên |
 |-------|---------|
@@ -8,4 +8,5 @@
 | 2200011573 | Tạ Quang Thành |
 
 Nội dung từng buổi: 
+
 Session01: Project Initialization
