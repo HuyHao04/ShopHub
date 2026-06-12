@@ -1,125 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import Header from './components/Header'
+import Banner from './components/Banner'
+import FeatureSection from './components/FeatureSection'
+import Footer from './components/Footer'
 import './App.css'
 
+const logoModules = import.meta.glob('./assets/logo.png', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+const logoSrc = logoModules['./assets/logo.png'] || ''
+
+const navItems = [
+  { label: 'Home', href: '#home' },
+  { label: 'Products', href: '#products' },
+  { label: 'Cart', href: '#cart' },
+  { label: 'Login', href: '#login' },
+]
+
+const features = [
+  {
+    id: '01',
+    title: 'Fast Delivery',
+    description: 'Orders move quickly from trusted shops to customers with clear delivery updates.',
+  },
+  {
+    id: '02',
+    title: 'Secure Payments',
+    description: 'ShopHub keeps checkout simple and protects every transaction with safe payment flows.',
+  },
+  {
+    id: '03',
+    title: 'Multiple Shops and Categories',
+    description: 'Customers can browse products from many shops and categories in one convenient place.',
+  },
+]
+
+const teamMembers = [
+  'Lâm Huy Hào',
+  'Phạm Mạnh Cường',
+  'Tạ Quang Thành',
+  'Khomphakdy Anousone',
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <h1>ShopHub</h1>
-      <h2>Lâm Huy Hào</h2>
-      <h3>08/06/2026</h3>
-
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <div className="app-shell">
+      <Header title="ShopHub" navItems={navItems} logoSrc={logoSrc} />
+      <main>
+        <Banner
+          title="Welcome to ShopHub"
+          subtitle="Modern e-commerce for everyday shopping"
+          description="Discover reliable shops, useful categories, and a smoother way to find the products you need."
+          buttonText="Shop Now"
+        />
+        <FeatureSection
+          title="Everything customers expect from an online marketplace"
+          description="ShopHub focuses on speed, trust, and choice for a simple shopping experience."
+          features={features}
+        />
+      </main>
+      <Footer
+        teamMembers={teamMembers}
+        classInfo="22BITV01"
+        studentYear="Year 4"
+        courseName="Chuyên đề tốt nghiệp Công nghệ phần mềm 2"
+        year="2026"
+      />
+    </div>
   )
 }
 
