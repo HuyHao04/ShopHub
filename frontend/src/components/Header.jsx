@@ -14,7 +14,7 @@ const Header = ({ title, navItems, logoSrc }) => {
 
       <nav className="main-nav" aria-label="Main navigation">
         {navItems.map((item) => (
-          <a key={item.label} href={item.href}>
+          <a className={item.active ? 'is-active' : ''} key={item.label} href={item.href}>
             {item.label}
           </a>
         ))}

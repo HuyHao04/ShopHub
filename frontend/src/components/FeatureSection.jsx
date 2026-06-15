@@ -1,6 +1,6 @@
 const FeatureSection = ({ title, description, features }) => {
   return (
-    <section className="feature-section" id="products">
+    <section className="feature-section" id="features">
       <div className="section-heading">
         <p className="section-kicker">Why ShopHub?</p>
         <h2>{title}</h2>

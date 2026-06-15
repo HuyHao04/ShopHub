@@ -1,7 +1,12 @@
+import { useState } from 'react'
 import Header from './components/Header'
 import Banner from './components/Banner'
 import FeatureSection from './components/FeatureSection'
 import Footer from './components/Footer'
+import ProductDetail from './components/ProductDetail'
+import ProductList from './components/ProductList'
+import UserDetail from './components/UserDetail'
+import UserList from './components/UserList'
 import './App.css'
 
 const logoModules = import.meta.glob('./assets/logo.png', {
@@ -14,7 +19,8 @@ const logoSrc = logoModules['./assets/logo.png'] || ''
 
 const navItems = [
   { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products' },
+  { label: 'Products', href: '#products', active: true },
+  { label: 'Users', href: '#users' },
   { label: 'Cart', href: '#cart' },
   { label: 'Login', href: '#login' },
 ]
@@ -45,6 +51,9 @@ const teamMembers = [
 ]
 
 function App() {
+  const [selectedProductId, setSelectedProductId] = useState(null)
+  const [selectedUserId, setSelectedUserId] = useState(null)
+
   return (
     <div className="app-shell">
       <Header title="ShopHub" navItems={navItems} logoSrc={logoSrc} />
@@ -55,6 +64,37 @@ function App() {
           description="Discover reliable shops, useful categories, and a smoother way to find the products you need."
           buttonText="Shop Now"
         />
+        <section className="catalog-section" id="products">
+          <div className="section-heading">
+            <p className="section-kicker">Fresh Picks</p>
+            <h2>Product Catalog</h2>
+            <p>
+              Browse everyday products across fashion, electronics, jewelry, and more.
+            </p>
+          </div>
+
+          <div className="catalog-layout">
+            <ProductList
+              selectedProductId={selectedProductId}
+              onSelectProduct={setSelectedProductId}
+            />
+            <ProductDetail productId={selectedProductId} />
+          </div>
+        </section>
+
+        <section className="users-section" id="users">
+          <div className="section-heading">
+            <p className="section-kicker">ShopHub Customers</p>
+            <h2>User Directory</h2>
+            <p>Review customer profiles with contact and delivery information.</p>
+          </div>
+
+          <div className="users-layout">
+            <UserList selectedUserId={selectedUserId} onSelectUser={setSelectedUserId} />
+            <UserDetail userId={selectedUserId} />
+          </div>
+        </section>
+
         <FeatureSection
           title="Everything customers expect from an online marketplace"
           description="ShopHub focuses on speed, trust, and choice for a simple shopping experience."
