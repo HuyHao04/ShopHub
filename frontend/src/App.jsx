@@ -3,10 +3,8 @@ import Header from './components/Header'
 import Banner from './components/Banner'
 import FeatureSection from './components/FeatureSection'
 import Footer from './components/Footer'
-import ProductDetail from './components/ProductDetail'
-import ProductList from './components/ProductList'
-import UserDetail from './components/UserDetail'
-import UserList from './components/UserList'
+import ProductPage from './pages/ProductPage'
+import UsersPage from './pages/UsersPage'
 import './App.css'
 
 const logoModules = import.meta.glob('./assets/logo.png', {
@@ -18,11 +16,11 @@ const logoModules = import.meta.glob('./assets/logo.png', {
 const logoSrc = logoModules['./assets/logo.png'] || ''
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products', active: true },
-  { label: 'Users', href: '#users' },
-  { label: 'Cart', href: '#cart' },
-  { label: 'Login', href: '#login' },
+  { label: 'Home', view: 'home' },
+  { label: 'Products', view: 'home' },
+  { label: 'Users', view: 'users' },
+  { label: 'Cart', view: 'cart' },
+  { label: 'Login', view: 'login' },
 ]
 
 const features = [
@@ -50,57 +48,91 @@ const teamMembers = [
   'Khomphakdy Anousone',
 ]
 
+const PlaceholderView = ({ title, description }) => {
+  return (
+    <main>
+      <section className="placeholder-section">
+        <p className="section-kicker">Coming Soon</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </section>
+    </main>
+  )
+}
+
 function App() {
-  const [selectedProductId, setSelectedProductId] = useState(null)
-  const [selectedUserId, setSelectedUserId] = useState(null)
+  const [currentView, setCurrentView] = useState('home')
+  const [activeNavLabel, setActiveNavLabel] = useState('Home')
+
+  const activeNavItems = navItems.map((item) => ({
+    ...item,
+    active: item.label === activeNavLabel,
+  }))
+
+  const navigateTo = (item) => {
+    setCurrentView(item.view)
+    setActiveNavLabel(item.label)
+
+    if (item.label === 'Products') {
+      setTimeout(() => {
+        const productsSection = document.getElementById('products')
+        if (productsSection) {
+          productsSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }
+
+  const showHomeView = currentView === 'home'
+  const showUsersView = currentView === 'users'
 
   return (
     <div className="app-shell">
-      <Header title="ShopHub" navItems={navItems} logoSrc={logoSrc} />
-      <main>
-        <Banner
-          title="Welcome to ShopHub"
-          subtitle="Modern e-commerce for everyday shopping"
-          description="Discover reliable shops, useful categories, and a smoother way to find the products you need."
-          buttonText="Shop Now"
+      <Header
+        title="ShopHub"
+        navItems={activeNavItems}
+        logoSrc={logoSrc}
+        onBrandClick={() => navigateTo(navItems[0])}
+        onNavigate={navigateTo}
+      />
+
+      {showHomeView ? (
+        <main>
+          <Banner
+            title="Welcome to ShopHub"
+            subtitle="Modern e-commerce for everyday shopping"
+            description="Discover reliable shops, useful categories, and a smoother way to find the products you need."
+            buttonText="Shop Now"
+          />
+          <ProductPage />
+          <FeatureSection
+            title="Everything customers expect from an online marketplace"
+            description="ShopHub focuses on speed, trust, and choice for a simple shopping experience."
+            features={features}
+          />
+        </main>
+      ) : null}
+
+      {showUsersView ? (
+        <main>
+          <UsersPage />
+        </main>
+      ) : null}
+
+      {currentView === 'cart' ? (
+        <PlaceholderView
+          title="Cart"
+          description="The shopping cart placeholder is ready for a later session."
         />
-        <section className="catalog-section" id="products">
-          <div className="section-heading">
-            <p className="section-kicker">Fresh Picks</p>
-            <h2>Product Catalog</h2>
-            <p>
-              Browse everyday products across fashion, electronics, jewelry, and more.
-            </p>
-          </div>
+      ) : null}
 
-          <div className="catalog-layout">
-            <ProductList
-              selectedProductId={selectedProductId}
-              onSelectProduct={setSelectedProductId}
-            />
-            <ProductDetail productId={selectedProductId} />
-          </div>
-        </section>
-
-        <section className="users-section" id="users">
-          <div className="section-heading">
-            <p className="section-kicker">ShopHub Customers</p>
-            <h2>User Directory</h2>
-            <p>Review customer profiles with contact and delivery information.</p>
-          </div>
-
-          <div className="users-layout">
-            <UserList selectedUserId={selectedUserId} onSelectUser={setSelectedUserId} />
-            <UserDetail userId={selectedUserId} />
-          </div>
-        </section>
-
-        <FeatureSection
-          title="Everything customers expect from an online marketplace"
-          description="ShopHub focuses on speed, trust, and choice for a simple shopping experience."
-          features={features}
+      {currentView === 'login' ? (
+        <PlaceholderView
+          title="Login"
+          description="The login placeholder is ready for a later session."
         />
-      </main>
+      ) : null}
+
       <Footer
         teamMembers={teamMembers}
         classInfo="22BITV01"

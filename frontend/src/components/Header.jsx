@@ -1,7 +1,14 @@
-const Header = ({ title, navItems, logoSrc }) => {
+const Header = ({ title, navItems, logoSrc, onBrandClick, onNavigate }) => {
+  const handleBrandClick = (event) => {
+    if (onBrandClick) {
+      event.preventDefault()
+      onBrandClick()
+    }
+  }
+
   return (
     <header className="site-header">
-      <a className="brand" href="#home" aria-label={`${title} home`}>
+      <a className="brand" href="#home" aria-label={`${title} home`} onClick={handleBrandClick}>
         {logoSrc ? (
           <img className="brand-logo" src={logoSrc} alt={`${title} logo`} />
         ) : (
@@ -14,9 +21,15 @@ const Header = ({ title, navItems, logoSrc }) => {
 
       <nav className="main-nav" aria-label="Main navigation">
         {navItems.map((item) => (
-          <a className={item.active ? 'is-active' : ''} key={item.label} href={item.href}>
+          <button
+            className={item.active ? 'is-active' : ''}
+            type="button"
+            key={item.label}
+            onClick={() => onNavigate(item)}
+            aria-current={item.active ? 'page' : undefined}
+          >
             {item.label}
-          </a>
+          </button>
         ))}
       </nav>
     </header>
