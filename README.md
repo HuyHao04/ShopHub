@@ -10,3 +10,9 @@
 Nội dung từng buổi: 
 
 Session01: Project Initialization
+
+Session02: Landing Page
+
+Session03: Product Catalog
+
+Session04: Search % Filter
