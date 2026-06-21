@@ -15,4 +15,4 @@ Session02: Landing Page
 
 Session03: Product Catalog
 
-Session04: Search % Filter
+Session04: Search & Filter
