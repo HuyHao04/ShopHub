@@ -6,7 +6,7 @@ const ProductList = ({ products, selectedProductId, onSelectProduct }) => {
   }
 
   return (
-    <div className="product-grid">
+    <>
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -15,7 +15,7 @@ const ProductList = ({ products, selectedProductId, onSelectProduct }) => {
           onViewDetails={onSelectProduct}
         />
       ))}
-    </div>
+    </>
   )
 }
 

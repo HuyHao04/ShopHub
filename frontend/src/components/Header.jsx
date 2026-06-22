@@ -1,14 +1,31 @@
-const Header = ({ title, navItems, logoSrc, onBrandClick, onNavigate }) => {
-  const handleBrandClick = (event) => {
-    if (onBrandClick) {
-      event.preventDefault()
-      onBrandClick()
-    }
-  }
+import { NavLink } from 'react-router-dom'
 
+const logoModules = import.meta.glob('../assets/logo.png', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+const logoSrc = logoModules['../assets/logo.png'] || ''
+
+const navLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'Products', to: '/products' },
+  { label: 'Cart', to: '/cart' },
+  { label: 'Login', to: '/login' },
+  { label: 'Users', to: '/users' },
+]
+
+const activeStyle = ({ isActive }) => ({
+  color: isActive ? '#ffffff' : undefined,
+  background: isActive ? '#0f766e' : undefined,
+  fontWeight: isActive ? 800 : undefined,
+})
+
+const Header = ({ title = 'ShopHub' }) => {
   return (
     <header className="site-header">
-      <a className="brand" href="#home" aria-label={`${title} home`} onClick={handleBrandClick}>
+      <NavLink className="brand" to="/" aria-label={`${title} home`}>
         {logoSrc ? (
           <img className="brand-logo" src={logoSrc} alt={`${title} logo`} />
         ) : (
@@ -17,19 +34,18 @@ const Header = ({ title, navItems, logoSrc, onBrandClick, onNavigate }) => {
           </span>
         )}
         <span className="brand-name">{title}</span>
-      </a>
+      </NavLink>
 
       <nav className="main-nav" aria-label="Main navigation">
-        {navItems.map((item) => (
-          <button
-            className={item.active ? 'is-active' : ''}
-            type="button"
-            key={item.label}
-            onClick={() => onNavigate(item)}
-            aria-current={item.active ? 'page' : undefined}
+        {navLinks.map((link) => (
+          <NavLink
+            key={link.label}
+            to={link.to}
+            end={link.to === '/'}
+            style={activeStyle}
           >
-            {item.label}
-          </button>
+            {link.label}
+          </NavLink>
         ))}
       </nav>
     </header>

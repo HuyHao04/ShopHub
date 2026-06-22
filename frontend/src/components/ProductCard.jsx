@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -18,14 +20,12 @@ const ProductCard = ({ product, isSelected, onViewDetails }) => {
         <h3>{productName}</h3>
         <p className="product-price">{currencyFormatter.format(product.price)}</p>
         <p className="product-description">{product.description}</p>
-        <button
+        <Link
           className="secondary-button product-detail-button"
-          type="button"
-          onClick={() => onViewDetails(product.id)}
-          aria-pressed={isSelected}
+          to={`/products/${product.id}`}
         >
           View Details
-        </button>
+        </Link>
       </div>
     </article>
   )

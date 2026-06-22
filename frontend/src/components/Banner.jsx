@@ -1,4 +1,4 @@
-import PrimaryButton from './PrimaryButton'
+import { Link } from 'react-router-dom'
 
 const Banner = ({ title, subtitle, description, buttonText }) => {
   return (
@@ -7,7 +7,9 @@ const Banner = ({ title, subtitle, description, buttonText }) => {
         <p className="section-kicker">{subtitle}</p>
         <h1>{title}</h1>
         <p className="banner-description">{description}</p>
-        <PrimaryButton label={buttonText} href="#products" />
+        <Link className="primary-button" to="/products">
+          {buttonText}
+        </Link>
       </div>
 
       <div className="shopping-preview" aria-label="ShopHub shopping preview">
@@ -24,10 +26,10 @@ const Banner = ({ title, subtitle, description, buttonText }) => {
           </div>
         </div>
         <div className="preview-grid">
-          <span>Electronics</span>
-          <span>Fashion</span>
-          <span>Home Goods</span>
-          <span>Groceries</span>
+          <Link to="/products?category=Electronics" style={{textDecoration: 'none'}}><span>Electronics</span></Link>
+          <Link to="/products?category=Fashion" style={{textDecoration: 'none'}}><span>Fashion</span></Link>
+          <Link to="/products?category=Home Goods" style={{textDecoration: 'none'}}><span>Home Goods</span></Link>
+          <Link to="/products?category=Groceries" style={{textDecoration: 'none'}}><span>Groceries</span></Link>
         </div>
       </div>
     </section>

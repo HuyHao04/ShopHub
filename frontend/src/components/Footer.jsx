@@ -1,4 +1,4 @@
-const Footer = ({ teamMembers, classInfo, studentYear, courseName, year }) => {
+const Footer = ({ teamMembers, classInfo, studentYear, studentName, courseName, year }) => {
   return (
     <footer className="site-footer">
       <div>
@@ -7,6 +7,11 @@ const Footer = ({ teamMembers, classInfo, studentYear, courseName, year }) => {
       </div>
 
       <div className="footer-info">
+        {studentName ? (
+          <p>
+            <strong>Student:</strong> {studentName}
+          </p>
+        ) : null}
         <p>
           <strong>Class:</strong> {classInfo}
         </p>
