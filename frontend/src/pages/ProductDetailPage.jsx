@@ -1,8 +1,8 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingMessage from '../components/LoadingMessage'
+import { productsApi } from '../api/productsApi'
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -22,17 +22,26 @@ const ProductDetailPage = () => {
       try {
         setLoading(true)
         setError('')
-        const response = await axios.get(`https://dummyjson.com/products/${id}`)
+        const data = await productsApi.getById(id)
 
         if (isCurrent) {
-          setProduct(response.data)
+          const rawImageUrl = data.image_url || data.imageUrl || data.thumbnail || ''
+          const finalImageUrl = (rawImageUrl.startsWith('http://') || rawImageUrl.startsWith('https://')) 
+            ? rawImageUrl 
+            : (rawImageUrl ? `http://localhost:8000${rawImageUrl.startsWith('/') ? '' : '/'}${rawImageUrl}` : '')
+
+          setProduct({
+            ...data,
+            title: data.name || data.title,
+            thumbnail: finalImageUrl,
+          })
         }
       } catch (err) {
         if (isCurrent) {
-          if (err.response && err.response.status === 404) {
+          if (err.message && err.message.toLowerCase().includes('not found')) {
             setError('not-found')
           } else {
-            setError('Failed to load product details. Please try again.')
+            setError(err.message || 'Failed to load product details. Please try again.')
           }
         }
       } finally {

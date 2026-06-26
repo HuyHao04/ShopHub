@@ -5,7 +5,7 @@
     "price": 109.95,
     "category": "Bags",
     "description": "Durable everyday backpack with a padded laptop sleeve and roomy storage for school, work, or travel.",
-    "imagePath": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "imagePath": "https://down-vn.img.susercontent.com/file/83f1180899fb080da56477c9cb04fa24@resize_w900_nl.webp",
     "costPrice": 65.0
   },
   {
@@ -14,7 +14,7 @@
     "price": 22.3,
     "category": "Men's Clothing",
     "description": "Soft slim-fit cotton blend shirt with contrast raglan sleeves and a comfortable lightweight feel.",
-    "imagePath": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv2-84eur-t-q59y162pHoe2ELQCQxX01T1ZLYIKyqsg&s=10",
     "costPrice": 12.0
   },
   {
@@ -23,7 +23,7 @@
     "price": 55.99,
     "category": "Men's Clothing",
     "description": "Lightweight outerwear jacket suitable for spring, autumn, hiking, camping, and casual daily wear.",
-    "imagePath": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLWmnNbNjzxG6iVoFOg2aSww-bLXufbuFOt8Nc3meJ0w&s=10",
     "costPrice": 31.5
   },
   {
@@ -32,7 +32,7 @@
     "price": 168.0,
     "category": "Jewelry",
     "description": "Elegant petite micropave ring designed for special occasions and polished everyday styling.",
-    "imagePath": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyId3ER9tcahzrhUDlZmUxt2tO0sUVmvVJBHLX1X8N7w&s",
     "costPrice": 96.0
   },
   {
@@ -41,7 +41,142 @@
     "price": 109.0,
     "category": "Electronics",
     "description": "Reliable solid state drive with fast read speeds for upgrading laptops, desktops, and coursework machines.",
-    "imagePath": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsNK1xUee01nlg5Aj9V2Q_G8KSy2ZteKe-gHBdn90Kw&s=10",
     "costPrice": 72.0
+  },
+  {
+    "id": 6,
+    "name": "Wireless Bluetooth Headphones",
+    "price": 79.99,
+    "category": "Electronics",
+    "description": "Over-ear wireless headphones with noise isolation, deep bass, and up to 30 hours of battery life.",
+    "imagePath": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "costPrice": 48.0
+  },
+  {
+    "id": 7,
+    "name": "Gaming Mechanical Keyboard",
+    "price": 89.99,
+    "category": "Electronics",
+    "description": "RGB mechanical keyboard with tactile switches, durable aluminum frame, and customizable lighting.",
+    "imagePath": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae",
+    "costPrice": 55.0
+  },
+  {
+    "id": 8,
+    "name": "Wireless Gaming Mouse",
+    "price": 49.99,
+    "category": "Electronics",
+    "description": "High-precision wireless gaming mouse with adjustable DPI and ergonomic design.",
+    "imagePath": "https://images.unsplash.com/photo-1527814050087-3793815479db",
+    "costPrice": 28.0
+  },
+  {
+    "id": 9,
+    "name": "Women's Casual Hoodie",
+    "price": 34.99,
+    "category": "Women's Clothing",
+    "description": "Comfortable fleece-lined hoodie suitable for daily wear and outdoor activities.",
+    "imagePath": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "costPrice": 18.0
+  },
+  {
+    "id": 10,
+    "name": "Women's Denim Jacket",
+    "price": 59.99,
+    "category": "Women's Clothing",
+    "description": "Classic denim jacket with a modern fit, perfect for layering in all seasons.",
+    "imagePath": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+    "costPrice": 35.0
+  },
+  {
+    "id": 11,
+    "name": "Leather Wallet",
+    "price": 29.99,
+    "category": "Accessories",
+    "description": "Premium leather wallet featuring multiple card slots and a slim profile.",
+    "imagePath": "https://images.unsplash.com/photo-1627123424574-724758594e93",
+    "costPrice": 15.0
+  },
+  {
+    "id": 12,
+    "name": "Smart Fitness Watch",
+    "price": 129.99,
+    "category": "Electronics",
+    "description": "Track heart rate, sleep, workouts, and notifications with this modern fitness watch.",
+    "imagePath": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    "costPrice": 78.0
+  },
+  {
+    "id": 13,
+    "name": "Portable Power Bank 20000mAh",
+    "price": 45.99,
+    "category": "Electronics",
+    "description": "High-capacity power bank with dual USB charging ports and fast charging support.",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbF_yrPJYL7hle5sgoFBsIgbU0q3xxTj9c-JqVW8BQQQ&s",
+    "costPrice": 26.0
+  },
+  {
+    "id": 14,
+    "name": "Running Shoes",
+    "price": 74.99,
+    "category": "Sports",
+    "description": "Lightweight running shoes designed for comfort, support, and long-distance performance.",
+    "imagePath": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "costPrice": 42.0
+  },
+  {
+    "id": 15,
+    "name": "Yoga Mat Premium",
+    "price": 24.99,
+    "category": "Sports",
+    "description": "Non-slip yoga mat with extra cushioning for workouts, stretching, and meditation.",
+    "imagePath": "https://images.unsplash.com/photo-1518611012118-696072aa579a",
+    "costPrice": 12.0
+  },
+  {
+    "id": 16,
+    "name": "Stainless Steel Water Bottle",
+    "price": 19.99,
+    "category": "Sports",
+    "description": "Reusable insulated water bottle that keeps drinks cold or hot for hours.",
+    "imagePath": "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
+    "costPrice": 9.0
+  },
+  {
+    "id": 17,
+    "name": "Office Laptop Stand",
+    "price": 39.99,
+    "category": "Office",
+    "description": "Adjustable aluminum laptop stand that improves posture and workspace organization.",
+    "imagePath": "https://netphukien.com/wp-content/uploads/Ki%CC%81ch-co%CC%9B%CC%83-1.jpg",
+    "costPrice": 22.0
+  },
+  {
+    "id": 18,
+    "name": "USB-C Hub 7-in-1",
+    "price": 49.99,
+    "category": "Electronics",
+    "description": "Expand connectivity with HDMI, USB, SD card reader, and power delivery support.",
+    "imagePath": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+    "costPrice": 29.0
+  },
+  {
+    "id": 19,
+    "name": "Ceramic Coffee Mug",
+    "price": 12.99,
+    "category": "Home",
+    "description": "Minimalist ceramic mug suitable for coffee, tea, and everyday use.",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTObFew6PzisAQEp6A-Oilsv1WbJNwbqyVyP7WCpogxtg&s=10",
+    "costPrice": 5.5
+  },
+  {
+    "id": 20,
+    "name": "Desk Lamp LED",
+    "price": 34.99,
+    "category": "Home",
+    "description": "Energy-efficient LED desk lamp with adjustable brightness and color temperatures.",
+    "imagePath": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+    "costPrice": 18.0
   }
 ]

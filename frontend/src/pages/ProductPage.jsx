@@ -1,11 +1,9 @@
-import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingMessage from '../components/LoadingMessage'
 import ProductList from '../components/ProductList'
-
-const PRODUCT_API_URL = 'https://dummyjson.com/products?limit=0'
+import { productsApi } from '../api/productsApi'
 const DEFAULT_CATEGORY = 'All'
 const DEFAULT_SORT = 'none'
 
@@ -30,12 +28,18 @@ const categoryMapping = {
   'groceries': 'Groceries',
 }
 
+const getImageUrl = (url) => {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://')) return url
+  return `http://localhost:8000${url.startsWith('/') ? '' : '/'}${url}`
+}
+
 const mapProduct = (item) => ({
   id: item.id,
-  name: item.title,
+  name: item.name || item.title,
   price: item.price,
-  category: categoryMapping[item.category] || 'Other',
-  imageUrl: item.thumbnail,
+  category: item.category || 'Other',
+  imageUrl: getImageUrl(item.image_url || item.imageUrl || item.thumbnail || ''),
   description: item.description,
 })
 
@@ -67,8 +71,9 @@ const ProductPage = () => {
         setLoading(true)
         setError('')
 
-        const productsRes = await axios.get(PRODUCT_API_URL)
-        const mappedProducts = productsRes.data.products.map(mapProduct)
+        const productsData = await productsApi.getAll({ size: 100 })
+        const dataArray = Array.isArray(productsData) ? productsData : (productsData.items || productsData.products || [])
+        const mappedProducts = dataArray.map(mapProduct)
 
         if (isCurrent) {
           setProducts(mappedProducts)
@@ -88,9 +93,9 @@ const ProductPage = () => {
 
           setCategories([DEFAULT_CATEGORY, ...sortedCategories])
         }
-      } catch {
+      } catch (err) {
         if (isCurrent) {
-          setError('Failed to load products. Please try again.')
+          setError(err.message || 'Failed to load products. Please try again.')
         }
       } finally {
         if (isCurrent) {
